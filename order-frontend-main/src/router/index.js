@@ -6,6 +6,8 @@ import HomeComponent from '@/components/HomeComponent.vue';
 // import TestComponent from '@/components/TestComponent.vue';
 import { practiceRouter } from './practiceRouter';
 import { memberRouter } from './memberRouter';
+import { ItemRouter } from './ItemRouter';
+
 const routes = [
     {
         // path로도 라우팅이 가능하고, name으로도 라우팅이 가능
@@ -21,7 +23,8 @@ const routes = [
     //     component: TestComponent
     // }
     ...practiceRouter,
-    ...memberRouter
+    ...memberRouter,
+    ...ItemRouter
 ]
 
 

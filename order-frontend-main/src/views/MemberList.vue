@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-row>
+        <v-row justify="center">
             <v-col>
                 <v-card>
                     <v-card-title class="text-center text-h5">
@@ -27,20 +27,29 @@ import axios from 'axios';
 export default{
     data(){
         return{
-            tableHeaders: [{title:'ID', key: 'id', align:'start'},
-            {title:'NAME', key: 'name', align:'start'},
-            {title: 'EMAIL', key: 'email' , align:'start'}],
+            tableHeaders: [{title:'ID', key: 'id', align:'center'},
+            {title:'NAME', key: 'name', align:'center'},
+            {title: 'EMAIL', key: 'email' , align:'center'},
+        {title: '주문수량', key: 'orderCount', align:'center'}],
             memberList: []
         }
     },
 
     async created(){
-        const token = localStorage.getItem('token');
-        const headers = {Authorization : `Bearer ${token}`};
+        // const token = localStorage.getItem('token');
+        // const headers = {Authorization : `Bearer ${token}`};
         // {headers : {"Authoriziation" : "Bearer 토큰값"}}                                 {headers} = {headers : headers}
-        const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`, {headers});
+        // const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`, {headers});
+        try{
+        const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/member/list`);
         this.memberList = response.data.result.content;
+    }catch(e){
+        console.log(e);
+    }
     }
 
 };
 </script>
+
+<style>
+</style>
