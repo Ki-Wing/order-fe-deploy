@@ -1,5 +1,9 @@
 <template>
-<ProductListComponent />
+    <!-- pross를 컴포넌트에 전달함으로서 컴포넌트 화면내에서 분기처리 -->
+<ProductListComponent 
+    :isAdmin="true"
+    pageTitle="상품관리"
+/>
 
 </template>
 

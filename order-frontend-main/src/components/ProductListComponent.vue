@@ -40,13 +40,55 @@
                 
             </v-col>
         </v-row>
+        <v-row>
+            <v-col>
+                <v-card>
+                        <v-card-title class="text-h5 text-center">
+                            {{pageTitle}}
+                        </v-card-title>
+                        <v-card-text>
+                            <v-table>
+                                <thead>
+                                    <tr>
+                                        <th>제품사진</th>
+                                        <th>제품명</th>
+                                        <th>가격</th>
+                                        <th>재고수량</th>
+                                        <th  v-if="!isAdmin">주문수량</th>
+                                        <th  v-if="!isAdmin">주문선택</th>
+                                        <th v-if="isAdmin">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="p in productList" :key="p.id">
+                                        <td>
+                                            <v-img :src="p.imagePath" style="height:100px;width:auto;margin:10%"></v-img>
+                                        </td>
+                                        <td >{{p.name}}</td>
+                                        <td>{{p.price}}</td>
+                                        <td>{{p.stockQuantity}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td v-if="isAdmin">
+                                            <v-btn color="danger" @click="deleteProduct(p.id)">삭제</v-btn>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </v-table>
+                        </v-card-text>
+                                
+                </v-card>
+            </v-col>
+        </v-row>
     </v-container>
 
 
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+    props:['isAdmin','pageTitle'],
     data() {
         return{
             searchType: "optional",
@@ -54,16 +96,31 @@ export default {
                 {text: "선택", value:'optional'},
                 {text:"상품명", value:"name"},
                 {text:"카테고리", value:"category"}
-
-
             ],
-            searchValue:""
+            searchValue:"",
+            productList:[]
         }
         
+    },
+    // 생명주기 훅 함수
+    created(){
+        this.loadProduct();
     },
     methods:{
         searchProducts(){
 
+        },
+        deleteProduct(productId){
+            console.log(productId)
+        },
+        async loadProduct(){
+            try{
+            const response = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/product/list`);
+            this.productList = response.data.result.content
+            console.log(response.data);
+        }catch(e){
+            console.log(e);
+            }
         }
     }
 }
