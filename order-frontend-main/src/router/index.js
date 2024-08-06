@@ -6,7 +6,7 @@ import HomeComponent from '@/components/HomeComponent.vue';
 // import TestComponent from '@/components/TestComponent.vue';
 import { practiceRouter } from './practiceRouter';
 import { memberRouter } from './memberRouter';
-import { ItemRouter } from './ItemRouter';
+import { ProductRouter } from './ProductRouter';
 
 const routes = [
     {
@@ -24,7 +24,7 @@ const routes = [
     // }
     ...practiceRouter,
     ...memberRouter,
-    ...ItemRouter
+    ...ProductRouter
 ]
 
 
