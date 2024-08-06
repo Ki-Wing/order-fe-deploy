@@ -1,7 +1,7 @@
 
 import ProductList from "@/components/ProductListComponent.vue";
 
-export const memberRouter = [
+export const ProductRouter = [
     {
         path: '/product/list',
         name: 'ProductList',
