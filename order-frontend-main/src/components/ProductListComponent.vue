@@ -96,8 +96,12 @@
 
 <script>
 import axios from 'axios';
+import {mapGetters} from 'vuex'
 export default {
     props:['isAdmin','pageTitle'],
+    computed:{
+     ...mapGetters(['getProductsInCarts'])
+    },
     data() {
         return{
             searchType: "optional",
@@ -188,7 +192,8 @@ export default {
             return {id:product.id, name:product.name, quantity : product.quantity};
         });
         orderProducts.forEach(p => this.$store.dispatch('addCart', p));
-        window.location.reload();
+        console.log(this.getProductsInCarts);
+        // window.location.reload();
     },
 
     async createOrder(){
