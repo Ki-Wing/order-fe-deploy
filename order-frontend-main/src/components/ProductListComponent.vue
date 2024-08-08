@@ -30,7 +30,7 @@
             </v-col>
 
             <v-col cols="auto" v-if="!isAdmin">
-                <v-btn color="secendary" class="mr-2">장바구니</v-btn>
+                <v-btn color="secendary" class="mr-2" @click="addCart">장바구니</v-btn>
                 <v-btn color="danger" @click="createOrder">주문하기</v-btn>
             </v-col>
             <v-col cols="auto" v-if="isAdmin">
@@ -180,6 +180,17 @@ export default {
             this.loadProduct();
         }
     },
+
+    addCart(){
+        const orderProducts = Object.keys(this.selected).filter(key=>this.selected[key])
+        .map(key=>{
+            const product = this.productList.find(p=>p.id == key)
+            return {id:product.id, name:product.name, quantity : product.quantity};
+        });
+        orderProducts.forEach(p => this.$store.dispatch('addCart', p));
+        window.location.reload();
+    },
+
     async createOrder(){
         const orderProducts = Object.keys(this.selected).filter(key=>this.selected[key])
         .map(key=>{

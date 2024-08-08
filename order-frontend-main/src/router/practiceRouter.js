@@ -6,7 +6,7 @@ import HookComponent from "@/components/practice/HookComponent.vue";
 import WatchUpdateComponent from "@/components/practice/WatchUpdateComponent.vue";
 import AxiosTestComponent from "@/components/practice/AxiosTestComponent.vue";
 import RouterTestComponent from "@/components/practice/RouterTestComponent.vue";
-import StoreTestComponenet1 from "@/components/practice/StoreTestComponenet1.vue";
+import StoreTestComponenet1 from "@/components/practice/StoreTestComponent1.vue";
 
 export const practiceRouter = [
     {
