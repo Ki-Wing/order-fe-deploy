@@ -1,7 +1,7 @@
 function initState() {
     return {
-        count: 0,
-        message:""
+        productsInCart : [],
+        totalQuantity:0
     };
 }
 
@@ -9,25 +9,26 @@ function initState() {
 const practice = {
     state: initState,
     mutations: {
-        increment(state) {
-            state.count++;
+        addCart(state, product) {
+            const existProducts = state.productsInCart.find(p=>p.id == product.id);
+            if(existProducts){
+                existProducts.quantity += product.quantity;
+            }else{
+                state.productsInCart.push(product);
+            }
+            state.totalQuantity += product.quantity;
         },
-        updateMessage(state, newMessage){
-            state.message = newMessage;
-        }
+
     },
     actions: {
-        incrementCount(context) {
-            context.commit('increment');
-        },
-        updateMessage(context, newMessage){
-            context.commit('updateMessage', newMessage);
-
+        addCart(context) {
+            context.commit('addCart');
         }
+
     },
     getters: {
-        getCount: state => state.count,
-        getMessage : state => state.message
+        getTotalQuantity: state => state.totalQuantity,
+        getProductsInCarts : state => state.productsInCart
     }
 }
 
