@@ -85,7 +85,8 @@ export default {
         },
         showPasswordModal() {
             this.ResetPassword = true;
-        }
+        },
+        
     }
 }
 </script>

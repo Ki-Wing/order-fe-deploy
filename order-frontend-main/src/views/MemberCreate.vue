@@ -69,7 +69,7 @@ export default{
                     }
                 }
                 await axios.post(`${process.env.VUE_APP_API_BASE_URL}/member/create`,registerData);
-                this.$router.push("/");
+                this.$router.push("/product/manage");
 
                 }catch(e){
                     const error_message = e.response.data.error_message;
