@@ -10,7 +10,7 @@
                          </div>
                     </v-col>
                 <v-col class="text-center">
-                    <v-btn :to="{path:'/'}">jjapmu shop</v-btn>
+                    <v-btn :to="{path:'/'}">JJAPMU STORE</v-btn>
                 </v-col>
                 <v-col class="d-flex justify-end">
                     <v-btn v-if="isLogin"  :to="{path:'/order/cart'}">장바구니({{ getTotalQuantity }})</v-btn>

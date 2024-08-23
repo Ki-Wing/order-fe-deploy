@@ -41,5 +41,10 @@ jobs:
       - name: clear s3 bucket
         run: aws s3 rm s3://www.kiwing.store/ --recursive
 
+      - name: deploy to s3
+        run: aws s3 cp ./dist s3://www.kiwing.store/ --recursive
 
-        
+      # 무효화
+      - name: invalidate cloudfront caches
+        run: aws cloudfront create-invalidation --distribution-id E14OYIQ0KKYIB0 --paths "/*"
+
