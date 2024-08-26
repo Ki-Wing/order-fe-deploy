@@ -14,7 +14,7 @@ jobs:
     steps:
     # actions는 github에서 제공되는 공식 워크플로우
     # chectkout은 현재 repo의 main브랜치 소스코드를 copy
-      - name: source code checkkout
+      - name: source code checkout
         uses: actions/checkout@v2
 
       - name: setup node.js
