@@ -78,7 +78,7 @@ export default {
                 window.location.href="/";
 
             }catch(e){
-                    const error_message = e.response.data.error_message;
+                    const error_message = e.response.data.error_message || e.message;
                     console.log(error_message);
                     alert(error_message);
                 }
